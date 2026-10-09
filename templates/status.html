@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1 class="section-title">Check Admission Status</h1>
+
+  <div class="card animate-scroll" style="max-width: 550px; margin: 0 auto;">
+    <p style="margin-bottom: 20px; text-align: center;">Enter the phone number used during admission submission to view application status.</p>
+
+    <form action="{{ url_for('status') }}" method="POST">
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" class="form-control" placeholder="e.g. 03007331807" required>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%;">Check Status</button>
+    </form>
+
+    {% if searched %}
+      <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+        {% if record %}
+          <h3>Application Status Result</h3>
+          <p style="margin-top: 10px;"><strong>Student Name:</strong> {{ record.student_name }}</p>
+          <p><strong>Class Applied:</strong> {{ record.class_applying }}</p>
+          <p><strong>Submission Date:</strong> {{ record.created_at }}</p>
+          <p style="margin-top: 10px; font-size: 1.1rem;">
+            <strong>Status:</strong> 
+            {% if record.status == 'Approved' %}
+              <span style="color: var(--green-accent); font-weight: bold;"><i class="fas fa-check-circle"></i> Approved</span>
+            {% elif record.status == 'Rejected' %}
+              <span style="color: #dc2626; font-weight: bold;"><i class="fas fa-times-circle"></i> Rejected</span>
+            {% else %}
+              <span style="color: var(--gold-accent); font-weight: bold;"><i class="fas fa-clock"></i> Pending Approval</span>
+            {% endif %}
+          </p>
+        {% else %}
+          <div style="text-align: center; color: #dc2626;">
+            <i class="fas fa-exclamation-triangle fa-2x"></i>
+            <p style="margin-top: 10px;">No admission record found for this phone number.</p>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
