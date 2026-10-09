@@ -1,20 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+/* Google Fonts Import: Clash Display (Modern Bold Headings) + Inter (Clean Body Text) */
+@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* 4th Image Color Theme: Green, Gold/Yellow, Deep Navy Header & Light Gray */
-  --green-primary: #1e7046;
-  --green-dark: #124d2f;
-  --green-gradient: linear-gradient(135deg, #124d2f 0%, #1e7046 50%, #2a925c 100%);
+  /* Exact Color Palette from Provided Image */
+  --green-gradient: linear-gradient(135deg, #0b4f32 0%, #157347 50%, #1e8a56 100%);
+  --green-primary: #157347;
+  --green-dark: #0b4f32;
   --gold-accent: #f5a623;
   --gold-hover: #d98e11;
-  --navy-dark: #0f172a;
+  --gold-banner: #f2a900;
+  --navy-header: #0f172a;
   --bg-light: #f8fafc;
   --card-bg: #ffffff;
   --text-main: #1e293b;
   --text-muted: #64748b;
-  --border-color: #e2e8f0;
-  --glass-bg: rgba(255, 255, 255, 0.12);
-  --glass-border: rgba(255, 255, 255, 0.25);
+  --border-color: #cbd5e1;
+  --border-card-top: #157347;
 }
 
 [data-theme="dark"] {
@@ -24,7 +25,7 @@
   --text-muted: #94a3b8;
   --border-color: #334155;
   --green-primary: #22c55e;
-  --green-dark: #0f172a;
+  --navy-header: #020617;
 }
 
 * {
@@ -35,22 +36,22 @@
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg-light);
   color: var(--text-main);
   line-height: 1.6;
 }
 
-/* Typography matching 1st/2nd/3rd layout with 4th image colors */
-h1, h2, h3, .heading-serif {
-  font-family: 'Playfair Display', Georgia, serif;
+/* Headings with Clash Display */
+h1, h2, h3, h4, .section-title, .navbar-brand {
+  font-family: 'Clash Display', 'Inter', sans-serif;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
-/* Urdu Layout & Fonts */
+/* Urdu Typography & RTL Alignment */
 body.lang-ur {
-  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', Tahoma, sans-serif;
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Inter', sans-serif;
   direction: rtl;
   text-align: right;
 }
@@ -60,11 +61,11 @@ a {
   color: inherit;
 }
 
-/* --- HEADER & NAVIGATION --- */
+/* --- TOP HEADER & NAVBAR --- */
 .header-top {
-  background-color: var(--navy-dark);
+  background-color: var(--navy-header);
   color: #ffffff;
-  padding: 6px 24px;
+  padding: 8px 24px;
   font-size: 0.85rem;
   display: flex;
   justify-content: space-between;
@@ -81,7 +82,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 [data-theme="dark"] .main-navbar {
@@ -92,23 +93,20 @@ a {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: var(--text-main);
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
+  color: var(--green-dark);
   font-size: 1.25rem;
 }
 
 .brand-logo-placeholder {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background-color: var(--green-primary);
   color: #ffffff;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 1.3rem;
+  font-weight: 700;
 }
 
 .nav-links-container {
@@ -119,21 +117,22 @@ a {
 
 .nav-link {
   color: var(--text-main);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: 6px;
+  text-transform: uppercase;
 }
 
 .nav-link:hover, .nav-link.active {
   color: var(--green-primary);
-  background-color: rgba(30, 112, 70, 0.08);
+  background-color: rgba(21, 115, 71, 0.08);
 }
 
 .toggle-btn {
   background-color: var(--gold-accent);
   border: none;
-  color: #ffffff;
+  color: var(--navy-header);
   padding: 6px 14px;
   border-radius: 6px;
   cursor: pointer;
@@ -145,35 +144,26 @@ a {
   background-color: var(--gold-hover);
 }
 
-/* --- HERO SECTION (Green Gradient + Gold Highlights) --- */
+/* --- HERO SECTION (Green Gradient + Gold Button) --- */
 .hero {
   background: var(--green-gradient);
   color: #ffffff;
-  padding: 80px 20px 60px 20px;
+  padding: 70px 20px 50px 20px;
   text-align: center;
-  position: relative;
-  border-bottom-left-radius: 32px;
-  border-bottom-right-radius: 32px;
-  box-shadow: 0 10px 30px rgba(18, 77, 47, 0.2);
+  box-shadow: 0 8px 25px rgba(11, 79, 50, 0.2);
 }
 
 .hero h1 {
-  font-size: 3.2rem;
-  line-height: 1.2;
-  margin-bottom: 12px;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
   color: #ffffff;
 }
 
-.hero h1 i, .hero h1 span.highlight {
-  font-style: italic;
-  color: var(--gold-accent);
-}
-
 .hero p.tagline {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: #e2e8f0;
-  max-width: 650px;
-  margin: 0 auto 30px auto;
+  margin-bottom: 30px;
   font-weight: 400;
 }
 
@@ -181,17 +171,14 @@ a {
   display: flex;
   justify-content: center;
   gap: 16px;
-  margin-bottom: 50px;
+  margin-bottom: 45px;
 }
 
-/* Buttons */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 26px;
+  display: inline-block;
+  padding: 12px 28px;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
   border: none;
@@ -199,7 +186,7 @@ a {
 
 .btn-primary {
   background-color: var(--gold-accent);
-  color: var(--navy-dark);
+  color: var(--navy-header);
 }
 
 .btn-primary:hover {
@@ -208,18 +195,17 @@ a {
 }
 
 .btn-secondary {
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 1px solid var(--glass-border);
+  background-color: transparent;
+  border: 2px solid #ffffff;
   color: #ffffff;
-  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
 }
 
-/* Glassmorphism Stat Cards */
+/* Stats Counter Grid */
 .stats-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -229,91 +215,101 @@ a {
 }
 
 .stat-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(12px);
-  padding: 22px;
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 12px;
   text-align: center;
 }
 
 .stat-number {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
+  font-family: 'Clash Display', sans-serif;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--gold-accent);
 }
 
 .stat-label {
   font-size: 0.85rem;
-  color: #f1f5f9;
+  color: #f8fafc;
   margin-top: 4px;
 }
 
-/* --- MAIN CONTENT & CARDS --- */
+/* --- CARDS LAYOUT (Matched to Image 4 Style) --- */
 .container {
   max-width: 1140px;
-  margin: 60px auto;
+  margin: 50px auto;
   padding: 0 20px;
-}
-
-.section-subtitle {
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--gold-accent);
-  text-align: center;
-  margin-bottom: 6px;
 }
 
 .section-title {
   text-align: center;
-  font-size: 2.2rem;
-  color: var(--text-main);
-  margin-bottom: 40px;
+  font-size: 2rem;
+  color: var(--navy-header);
+  margin-bottom: 35px;
 }
 
-/* Rounded Lifted Cards (Matching Images 1, 2 & 3) */
+[data-theme="dark"] .section-title {
+  color: var(--gold-accent);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
 .card {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 18px;
-  padding: 28px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s;
+  border-top: 4px solid var(--border-card-top);
+  border-radius: 12px;
+  padding: 26px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
 }
 
 .card h3 {
-  font-size: 1.4rem;
-  color: var(--text-main);
+  font-size: 1.3rem;
+  color: var(--navy-header);
   margin-bottom: 10px;
+}
+
+[data-theme="dark"] .card h3 {
+  color: #ffffff;
 }
 
 .card p {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 
-/* Call To Action Banner (Gold background from 4th image) */
+/* Call To Action Yellow/Gold Banner (Image 4 exact) */
 .cta-banner {
-  background: linear-gradient(135deg, var(--gold-accent), #e09310);
-  color: var(--navy-dark);
-  padding: 45px 30px;
-  border-radius: 20px;
+  background-color: var(--gold-banner);
+  color: var(--navy-header);
+  padding: 40px 20px;
+  border-radius: 14px;
   text-align: center;
-  margin-top: 60px;
-  box-shadow: 0 10px 25px rgba(245, 166, 35, 0.3);
+  margin-top: 50px;
+  box-shadow: 0 8px 20px rgba(242, 169, 0, 0.25);
 }
 
 .cta-banner h2 {
   font-size: 2rem;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+}
+
+.cta-banner p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 
 .cta-banner .btn {
@@ -322,14 +318,14 @@ a {
 }
 
 .cta-banner .btn:hover {
-  background-color: var(--navy-dark);
+  background-color: var(--navy-header);
 }
 
-/* --- CHATBOT & WHATSAPP FLOATING BUTTONS --- */
+/* --- FLOATING CHATBOT & WHATSAPP --- */
 .floating-container {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 20px;
+  right: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -337,15 +333,15 @@ a {
 }
 
 .float-btn {
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
   font-size: 1.4rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   border: none;
 }
@@ -355,15 +351,13 @@ a {
 }
 
 .btn-chatbot {
-  background-color: var(--green-primary);
+  background-color: var(--green-dark);
 }
 
 /* Footer */
 footer {
-  background-color: var(--navy-dark);
+  background-color: var(--navy-header);
   color: #ffffff;
-  padding: 50px 20px 20px 20px;
-  margin-top: 80px;
-  border-top-left-radius: 24px;
-  border-top-right-radius: 24px;
+  padding: 40px 20px 20px 20px;
+  margin-top: 70px;
 }
