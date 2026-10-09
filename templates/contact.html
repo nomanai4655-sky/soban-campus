@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1 class="section-title">Contact Us</h1>
+
+  <div class="grid-2 animate-scroll">
+    <div class="card">
+      <h3>School Information</h3>
+      <p style="margin-top: 15px;"><i class="fas fa-school" style="color: var(--green-accent);"></i> <strong>Name:</strong> The Educators (Soban Campus)</p>
+      <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt" style="color: var(--green-accent);"></i> <strong>Address:</strong> Ahmad Cottage, Opp. Best Way CNG, Raja Pur Stop, Khanewal Road, Multan</p>
+      <p style="margin-top: 10px;"><i class="fas fa-phone" style="color: var(--green-accent);"></i> <strong>Phone:</strong> 0300-7331807</p>
+      <p style="margin-top: 10px;"><i class="fab fa-whatsapp" style="color: var(--green-accent);"></i> <strong>WhatsApp:</strong> 0300-7331807</p>
+      <p style="margin-top: 10px;"><i class="fas fa-calendar-alt" style="color: var(--green-accent);"></i> <strong>Working Days:</strong> Monday to Friday (Saturday & Sunday OFF)</p>
+
+      <div style="margin-top: 25px;">
+        <a href="https://wa.me/923007331807" target="_blank" class="btn btn-secondary" style="width: 100%; text-align: center;">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp Now
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Send Us a Message</h3>
+      <form action="{{ url_for('contact') }}" method="POST" style="margin-top: 15px;">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" name="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp Number *</label>
+          <input type="tel" name="phone" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Subject *</label>
+          <input type="text" name="subject" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Message *</label>
+          <textarea name="message" class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
