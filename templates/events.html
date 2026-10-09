@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1 class="section-title">Upcoming School Events</h1>
+
+  <div class="grid-3 animate-scroll">
+    {% for ev in events_list %}
+      <div class="card">
+        <span style="font-size: 0.8rem; background: var(--gold-accent); color: var(--navy-dark); padding: 2px 8px; border-radius: 4px; font-weight: bold;">{{ ev.date }}</span>
+        <h3 style="margin-top: 10px;">{{ ev.title }}</h3>
+        <p style="margin-top: 10px;">{{ ev.desc }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
