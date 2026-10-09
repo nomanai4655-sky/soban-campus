@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1 class="section-title">Latest News</h1>
+
+  <div class="grid-3 animate-scroll">
+    {% for item in news_items %}
+      <div class="card">
+        <span style="font-size: 0.8rem; background: var(--green-accent); color: white; padding: 2px 8px; border-radius: 4px;">{{ item.date }}</span>
+        <h3 style="margin-top: 10px;">{{ item.title }}</h3>
+        <p style="margin-top: 10px;">{{ item.desc }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
