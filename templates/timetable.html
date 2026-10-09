@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1 class="section-title">Weekly Class Timetable</h1>
+  <p style="text-align: center; margin-bottom: 25px; color: var(--gold-accent); font-weight: 600;">School Days: Monday to Friday | Saturday & Sunday: OFF</p>
+
+  <div class="table-responsive card animate-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Period 1<br>(8:00-8:45)</th>
+          <th>Period 2<br>(8:45-9:30)</th>
+          <th>Period 3<br>(9:30-10:15)</th>
+          <th>BREAK<br>(10:15-10:45)</th>
+          <th>Period 4<br>(10:45-11:30)</th>
+          <th>Period 5<br>(11:30-12:15)</th>
+          <th>Period 6<br>(12:15-1:00)</th>
+          <th>Period 7<br>(1:00-1:30)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Monday</strong></td>
+          <td>English</td>
+          <td>Math</td>
+          <td>Physics</td>
+          <td rowspan="5" style="background: rgba(242, 169, 0, 0.15); font-weight: bold; text-align: center;">RECESS / BREAK</td>
+          <td>Chemistry</td>
+          <td>Computer</td>
+          <td>Urdu</td>
+          <td>Pak Studies</td>
+        </tr>
+        <tr>
+          <td><strong>Tuesday</strong></td>
+          <td>Math</td>
+          <td>English</td>
+          <td>Chemistry</td>
+          <td>Physics</td>
+          <td>Urdu</td>
+          <td>Computer</td>
+          <td>Pak Studies</td>
+        </tr>
+        <tr>
+          <td><strong>Wednesday</strong></td>
+          <td>Physics</td>
+          <td>Chemistry</td>
+          <td>English</td>
+          <td>Math</td>
+          <td>Computer</td>
+          <td>Pak Studies</td>
+          <td>Urdu</td>
+        </tr>
+        <tr>
+          <td><strong>Thursday</strong></td>
+          <td>Computer</td>
+          <td>Physics</td>
+          <td>Math</td>
+          <td>English</td>
+          <td>Chemistry</td>
+          <td>Urdu</td>
+          <td>Pak Studies</td>
+        </tr>
+        <tr>
+          <td><strong>Friday</strong></td>
+          <td>Islamiat</td>
+          <td>English</td>
+          <td>Math</td>
+          <td>Physics</td>
+          <td>Chemistry</td>
+          <td>Computer</td>
+          <td>Urdu</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
