@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1 class="section-title">Admissions</h1>
+
+  <div class="grid-2 animate-scroll">
+    <!-- Left Column: Steps & Documents -->
+    <div>
+      <div class="card" style="margin-bottom: 20px;">
+        <h3>Admission Process</h3>
+        <ol style="margin-left: 20px; margin-top: 10px;">
+          <li>Submit online application form or visit campus office.</li>
+          <li>Bring required student documents for verification.</li>
+          <li>Short student evaluation / diagnostic assessment.</li>
+          <li>Fee submission and confirmation of admission.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3>Required Documents</h3>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+          <li>Copy of Student B-Form</li>
+          <li>Copy of Father / Guardian CNIC</li>
+          <li>2 Recent Passport Size Photographs</li>
+          <li>School Leaving Certificate (if applicable)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Column: Form -->
+    <div class="card">
+      <h3>Application Form</h3>
+      <form action="{{ url_for('admissions') }}" method="POST" enctype="multipart/form-data" style="margin-top: 15px;">
+        <div class="form-group">
+          <label>Student's Full Name *</label>
+          <input type="text" name="student_name" class="form-control" required placeholder="e.g. Ali Ahmad">
+        </div>
+
+        <div class="form-group">
+          <label>Father's Name *</label>
+          <input type="text" name="father_name" class="form-control" required placeholder="e.g. Muhammad Ahmad">
+        </div>
+
+        <div class="form-group">
+          <label>Class Applying For *</label>
+          <select name="class_applying" class="form-control" required>
+            <option value="">Select Class</option>
+            {% for c in range(1, 11) %}
+              <option value="Class {{ c }}">Class {{ c }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Phone / WhatsApp Number *</label>
+          <input type="tel" name="phone" class="form-control" required placeholder="03001234567">
+        </div>
+
+        <div class="form-group">
+          <label>Previous School (Optional)</label>
+          <input type="text" name="prev_school" class="form-control" placeholder="Previous school name">
+        </div>
+
+        <div class="form-group">
+          <label>Residential Address (Optional)</label>
+          <textarea name="address" class="form-control" rows="2" placeholder="Full home address"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Attach Previous Certificate / B-Form (Optional)</label>
+          <input type="file" name="certificate" class="form-control" accept=".pdf,.png,.jpg,.jpeg">
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Submit Application</button>
+          <button type="button" class="btn btn-outline btn-no-print" onclick="window.print()" style="color: var(--navy-primary); border-color: var(--navy-primary);"><i class="fas fa-print"></i> Print</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
