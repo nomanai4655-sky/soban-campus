@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1 class="section-title">Admin Management Panel</h1>
+
+  <!-- Admission Requests -->
+  <div class="card animate-scroll" style="margin-bottom: 40px;">
+    <h3>Admission Applications</h3>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Student</th>
+            <th>Father Name</th>
+            <th>Class</th>
+            <th>Phone</th>
+            <th>Prev. School</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in admissions %}
+            <tr>
+              <td>#{{ a.id }}</td>
+              <td>{{ a.student_name }}</td>
+              <td>{{ a.father_name }}</td>
+              <td>{{ a.class_applying }}</td>
+              <td>{{ a.phone }}</td>
+              <td>{{ a.prev_school or 'N/A' }}</td>
+              <td><strong>{{ a.status }}</strong></td>
+              <td>
+                <form action="{{ url_for('admin') }}" method="POST" style="display: flex; gap: 5px;">
+                  <input type="hidden" name="admin_action" value="update_status">
+                  <input type="hidden" name="app_id" value="{{ a.id }}">
+                  <select name="new_status" class="form-control" style="padding: 2px; font-size: 0.8rem;">
+                    <option value="Pending" {% if a.status == 'Pending' %}selected{% endif %}>Pending</option>
+                    <option value="Approved" {% if a.status == 'Approved' %}selected{% endif %}>Approved</option>
+                    <option value="Rejected" {% if a.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+                  </select>
+                  <button type="submit" class="btn btn-primary" style="padding: 2px 8px; font-size: 0.8rem;">Save</button>
+                </form>
+              </td>
+            </tr>
+          {% else %}
+            <tr><td colspan="8">No admission requests found.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Contact Messages -->
+  <div class="card animate-scroll" style="margin-bottom: 40px;">
+    <h3>Contact Form Messages</h3>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Subject</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in contacts %}
+            <tr>
+              <td>{{ c.created_at }}</td>
+              <td>{{ c.name }}</td>
+              <td>{{ c.phone }}</td>
+              <td>{{ c.subject }}</td>
+              <td>{{ c.message }}</td>
+            </tr>
+          {% else %}
+            <tr><td colspan="5">No contact messages received yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Registered Users -->
+  <div class="card animate-scroll">
+    <h3>Registered Users</h3>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Full Name</th>
+            <th>Phone Number</th>
+            <th>Registration Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for u in users %}
+            <tr>
+              <td>#{{ u.id }}</td>
+              <td>{{ u.fullname }}</td>
+              <td>{{ u.phone }}</td>
+              <td>{{ u.created_at }}</td>
+            </tr>
+          {% else %}
+            <tr><td colspan="4">No registered users found.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
