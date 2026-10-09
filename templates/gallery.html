@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1 class="section-title">Campus Gallery</h1>
+
+  <div class="grid-3 animate-scroll">
+    {% for i in range(1, 7) %}
+      <div class="card" style="padding: 10px;">
+        <div style="height: 200px; background-color: var(--navy-primary); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: bold;">
+          Campus Photo Placeholder #{{ i }}
+        </div>
+        <p style="margin-top: 10px; font-weight: 600; text-align: center;">Soban Campus Activity #{{ i }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
