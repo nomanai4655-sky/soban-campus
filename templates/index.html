@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+  <h1 data-i18n="brand_name">The Educators (Soban Campus)</h1>
+  <p class="tagline" data-i18n="tagline">"Join Conceptual Learning"</p>
+  
+  <div class="hero-buttons">
+    <a href="{{ url_for('about') }}" class="btn btn-primary" data-i18n="explore_btn">Explore Our School</a>
+    <a href="{{ url_for('admissions') }}" class="btn btn-secondary" data-i18n="apply_btn">Apply for Admission</a>
+  </div>
+
+  <div class="stats-container">
+    <div class="stat-card">
+      <div class="stat-number"><span class="counter" data-target="8">0</span>+</div>
+      <div class="stat-label" data-i18n="stat_years">Years of Excellence</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number"><span class="counter" data-target="500">0</span>+</div>
+      <div class="stat-label" data-i18n="stat_students">Students Enrolled</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number"><span class="counter" data-target="30">0</span>+</div>
+      <div class="stat-label" data-i18n="stat_staff">Staff Members</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number"><span class="counter" data-target="96">0</span>%</div>
+      <div class="stat-label" data-i18n="stat_success">Academic Success Rate</div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <!-- Programs Offered -->
+  <h2 class="section-title animate-scroll">Academic Programs</h2>
+  <div class="grid-3 animate-scroll">
+    <div class="card">
+      <h3>Primary Level</h3>
+      <p style="font-weight: 600; color: var(--green-accent);">Class 1 to Class 5</p>
+      <p style="margin-top: 10px;">Focusing on strong foundational literacy, numeracy, conceptual understanding, and character building.</p>
+    </div>
+    <div class="card">
+      <h3>Middle Level</h3>
+      <p style="font-weight: 600; color: var(--green-accent);">Class 6 to Class 8</p>
+      <p style="margin-top: 10px;">Developing analytical thinking, introductory science practicals, and advanced mathematical concepts.</p>
+    </div>
+    <div class="card">
+      <h3>Matriculation</h3>
+      <p style="font-weight: 600; color: var(--green-accent);">Class 9 to Class 10</p>
+      <p style="margin-top: 10px;">Rigorous board preparation in Science and Arts streams designed for academic excellence in BISE exams.</p>
+    </div>
+  </div>
+
+  <!-- Facilities Grid -->
+  <h2 class="section-title animate-scroll" style="margin-top: 50px;">Campus Facilities</h2>
+  <div class="grid-4 animate-scroll">
+    <div class="card" style="text-align: center;">
+      <i class="fas fa-chalkboard-teacher fa-2x" style="color: var(--navy-primary); margin-bottom: 10px;"></i>
+      <h3>Classrooms</h3>
+      <p>Spacious, well-ventilated, modern learning spaces.</p>
+    </div>
+    <div class="card" style="text-align: center;">
+      <i class="fas fa-flask fa-2x" style="color: var(--navy-primary); margin-bottom: 10px;"></i>
+      <h3>Science & Chemistry Lab</h3>
+      <p>Equipped for practical physics and chemistry demonstrations.</p>
+    </div>
+    <div class="card" style="text-align: center;">
+      <i class="fas fa-desktop fa-2x" style="color: var(--navy-primary); margin-bottom: 10px;"></i>
+      <h3>Computer Lab</h3>
+      <p>Hands-on digital literacy and computer education labs.</p>
+    </div>
+    <div class="card" style="text-align: center;">
+      <i class="fas fa-book fa-2x" style="color: var(--navy-primary); margin-bottom: 10px;"></i>
+      <h3>Library</h3>
+      <p>A collection of curriculum and general knowledge reading books.</p>
+    </div>
+  </div>
+
+  <!-- Event Previews -->
+  <h2 class="section-title animate-scroll" style="margin-top: 50px;">Upcoming Events</h2>
+  <div class="grid-3 animate-scroll">
+    {% for ev in events %}
+      <div class="card">
+        <span style="font-size: 0.8rem; background: var(--gold-accent); padding: 2px 8px; border-radius: 4px; font-weight: bold;">{{ ev.date }}</span>
+        <h3 style="margin-top: 10px;">{{ ev.title }}</h3>
+        <p style="margin-top: 8px;">{{ ev.desc }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Admission CTA Banner -->
+  <div class="cta-banner animate-scroll">
+    <h2>Admissions Open for New Session</h2>
+    <p style="margin: 15px 0;">Classes 1 to 10 (Matric). Give your child the edge of conceptual learning.</p>
+    <a href="{{ url_for('admissions') }}" class="btn btn-primary">Apply Now</a>
+  </div>
+</div>
+{% endblock %}
