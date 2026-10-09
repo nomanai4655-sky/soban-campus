@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="card animate-scroll" style="max-width: 480px; margin: 0 auto;">
+    <!-- Auth Mode Switcher Tabs -->
+    <div style="display: flex; border-bottom: 2px solid var(--border-color); margin-bottom: 20px;">
+      <button id="tabLogin" class="btn" style="flex: 1; border-radius: 0; background: transparent; color: var(--text-color); border-bottom: 3px solid var(--navy-primary);" onclick="switchAuthTab('login')">Login</button>
+      <button id="tabSignup" class="btn" style="flex: 1; border-radius: 0; background: transparent; color: var(--text-color);" onclick="switchAuthTab('signup')">Sign Up</button>
+      <button id="tabAdmin" class="btn" style="flex: 1; border-radius: 0; background: transparent; color: var(--text-color);" onclick="switchAuthTab('admin')">Admin</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="formLogin" action="{{ url_for('auth') }}" method="POST">
+      <input type="hidden" name="action" value="login">
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" class="form-control" required placeholder="03001234567">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" required>
+      </div>
+      <div class="form-group" style="display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox" name="remember" id="rememberMe">
+        <label for="rememberMe" style="margin-bottom: 0; font-weight: normal;">Remember for 30 days</label>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+      <p style="margin-top: 15px; text-align: center; font-size: 0.85rem;">
+        <a href="#" onclick="alert('Please contact the school main office (0300-7331807) to reset your password.'); return false;" style="color: var(--navy-primary);">Forgot Password?</a>
+      </p>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="formSignup" action="{{ url_for('auth') }}" method="POST" style="display: none;">
+      <input type="hidden" name="action" value="signup">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="fullname" class="form-control" required placeholder="Full Name">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" class="form-control" required placeholder="03001234567">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-secondary" style="width: 100%;">Create Account</button>
+    </form>
+
+    <!-- Admin Form -->
+    <form id="formAdmin" action="{{ url_for('auth') }}" method="POST" style="display: none;">
+      <input type="hidden" name="action" value="admin_login">
+      <div class="form-group">
+        <label>Admin Username</label>
+        <input type="text" name="username" class="form-control" required placeholder="admin">
+      </div>
+      <div class="form-group">
+        <label>Admin Password</label>
+        <input type="password" name="password" class="form-control" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%; background: var(--navy-dark);">Login as Admin</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function switchAuthTab(type) {
+  const fLogin = document.getElementById("formLogin");
+  const fSignup = document.getElementById("formSignup");
+  const fAdmin = document.getElementById("formAdmin");
+  
+  const tLogin = document.getElementById("tabLogin");
+  const tSignup = document.getElementById("tabSignup");
+  const tAdmin = document.getElementById("tabAdmin");
+
+  [fLogin, fSignup, fAdmin].forEach(f => f.style.display = "none");
+  [tLogin, tSignup, tAdmin].forEach(t => t.style.borderBottom = "none");
+
+  if (type === 'login') {
+    fLogin.style.display = "block";
+    tLogin.style.borderBottom = "3px solid var(--navy-primary)";
+  } else if (type === 'signup') {
+    fSignup.style.display = "block";
+    tSignup.style.borderBottom = "3px solid var(--navy-primary)";
+  } else if (type === 'admin') {
+    fAdmin.style.display = "block";
+    tAdmin.style.borderBottom = "3px solid var(--navy-primary)";
+  }
+}
+</script>
+{% endblock %}
